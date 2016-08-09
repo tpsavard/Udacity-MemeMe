@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Meme View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MemeViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -26,13 +26,29 @@
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
-                                    <barButtonItem systemItem="cancel" id="B6c-U4-l9w"/>
+                                    <barButtonItem systemItem="cancel" id="B6c-U4-l9w">
+                                        <connections>
+                                            <action selector="reset:" destination="BYZ-38-t0r" id="gzy-Nf-KRY"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Ik3-Yi-hEe"/>
-                                    <barButtonItem systemItem="camera" id="yQ9-Kp-YnO"/>
+                                    <barButtonItem systemItem="camera" id="yQ9-Kp-YnO">
+                                        <connections>
+                                            <action selector="getPhotoFromCamera:" destination="BYZ-38-t0r" id="dWU-5G-I33"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem width="20" style="plain" systemItem="fixedSpace" id="NYc-MK-vBE"/>
-                                    <barButtonItem title="Album" id="8G7-Jq-ffm"/>
+                                    <barButtonItem title="Album" id="8G7-Jq-ffm">
+                                        <connections>
+                                            <action selector="getPhotoFromAlbum:" destination="BYZ-38-t0r" id="x7c-Zd-OBX"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="CGM-dy-29I"/>
-                                    <barButtonItem systemItem="action" id="PRj-af-rRE"/>
+                                    <barButtonItem systemItem="action" id="PRj-af-rRE">
+                                        <connections>
+                                            <action selector="share:" destination="BYZ-38-t0r" id="f0X-C4-MB8"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XEZ-so-dIA">
@@ -65,6 +81,13 @@
                             <constraint firstItem="lFA-wt-waJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="xD3-U0-msK"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bottomTextfield" destination="zz9-MC-dfb" id="cW9-Zd-eJ9"/>
+                        <outlet property="cameraButton" destination="yQ9-Kp-YnO" id="LNs-sT-tQq"/>
+                        <outlet property="imageView" destination="lFA-wt-waJ" id="ywd-O1-zQE"/>
+                        <outlet property="shareButton" destination="PRj-af-rRE" id="e92-ff-QhC"/>
+                        <outlet property="topTextfield" destination="XEZ-so-dIA" id="TX2-GX-MeZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

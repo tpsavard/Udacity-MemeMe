@@ -15,6 +15,7 @@ struct Meme {
     var bottomText: String
     var originalImage: UIImage
     
+    // Compiled meme
     var compiledImage: UIImage
     
 }
