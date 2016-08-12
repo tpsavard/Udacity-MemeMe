@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MemeViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class MemeViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
 
     // Meme Components
     @IBOutlet weak var imageView: UIImageView!
@@ -37,15 +37,47 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
             UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Subscribe to keyboard notifications
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(keyboardWillShow(_:)),
+            name: UIKeyboardWillShowNotification,
+            object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(keyboardWillHide(_:)),
+            name: UIKeyboardWillHideNotification,
+            object: nil)
+    }
     
-    // MARK:- Delegate Methods
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Unsubscribe from keybaord notifications
+        NSNotificationCenter.defaultCenter().removeObserver(
+            self,
+            name: UIKeyboardWillShowNotification,
+            object: nil)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(
+            self,
+            name: UIKeyboardWillHideNotification,
+            object: nil)
+    }
+    
+    
+    // MARK:- Delegate Methods, Notification Handlers
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         print("imagePickerController:didFinishPickingMediaWithInfo called")
         
-//        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-//        myImageView.contentMode = .ScaleAspectFit
-//        myImageView.image = chosenImage
+        let image: UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        imageView.contentMode = .ScaleAspectFit
+        imageView.image = image
         
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -55,28 +87,44 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+        moveBottomTextFieldDown()
+        return true
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        moveBottomTextFieldUp()
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        moveBottomTextFieldDown()
+    }
+    
     
     // MARK:- UI Methods
+    
+    @IBAction func endEditing(sender: UITextField) {
+        print("endEditing IBAction called")
+        self.view.endEditing(false)
+    }
     
     @IBAction func reset(sender: UIBarButtonItem) {
         print("reset IBAction called")
         reset()
     }
     
-    @IBAction func getPhotoFromCamera(sender: UIBarButtonItem) {
-        print("getPhotoFromCamera IBAction called")
+    @IBAction func getPhoto(sender: UIBarButtonItem) {
+        print("getPhoto IBAction called")
         
         picker.allowsEditing = false
-        picker.sourceType = .Camera
         picker.modalPresentationStyle = .FullScreen
-        presentViewController(picker, animated: true, completion: nil)
-    }
-    
-    @IBAction func getPhotoFromAlbum(sender: UIBarButtonItem) {
-        print("getPhotoFromAlbum IBAction called")
         
-        picker.allowsEditing = false
-        picker.sourceType = .PhotoLibrary
+        if (sender.tag == cameraButton.tag) {
+            picker.sourceType = .Camera
+        } else {
+            picker.sourceType = .PhotoLibrary
+        }
+        
         presentViewController(picker, animated: true, completion: nil)
     }
     
@@ -95,6 +143,22 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         shareButton.enabled = false
         topTextfield.text = "TOP"
         bottomTextfield.text = "BOTTOM"
+    }
+    
+    func moveBottomTextFieldUp() {
+//        if (view.frame.origin.y == 0) {
+//            view.frame.origin.y -= getKeyboardHeight(notification)
+//        }
+    }
+    
+    func moveBottomTextFieldDown() {
+//        view.frame.origin.y = 0
+    }
+    
+    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardFrame: NSValue = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
+        return keyboardFrame.CGRectValue().height
     }
     
     func compileMeme() {
