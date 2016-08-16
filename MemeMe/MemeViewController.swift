@@ -20,7 +20,8 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     @IBOutlet weak var shareButton: UIBarButtonItem!
     
     let picker:UIImagePickerController = UIImagePickerController()
-    let meme:Meme? = nil
+    
+    var meme:Meme? = nil
     
     
     // MARK:- View Controller Methods
@@ -76,10 +77,13 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         print("imagePickerController:didFinishPickingMediaWithInfo called")
         
+        // Set the image
         let image: UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         imageView.contentMode = .ScaleAspectFit
         imageView.image = image
         
+        // Update UI
+        shareButton.enabled = true
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -107,7 +111,7 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     
     @IBAction func endEditing(sender: UITextField) {
         print("endEditing IBAction called")
-        self.view.endEditing(false)
+        view.endEditing(false)
     }
     
     @IBAction func reset(sender: UIBarButtonItem) {
@@ -118,9 +122,11 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     @IBAction func getPhoto(sender: UIBarButtonItem) {
         print("getPhoto IBAction called")
         
+        // Common picker settings
         picker.allowsEditing = false
         picker.modalPresentationStyle = .FullScreen
         
+        // Choose the camera or album view, depending on what button was pressed
         if (sender.tag == cameraButton.tag) {
             picker.sourceType = .Camera
         } else {
@@ -132,6 +138,16 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     
     @IBAction func share(sender: UIBarButtonItem) {
         print("share IBAction called")
+        
+        // Build the meme
+        let memeImage: UIImage = buildMemeImage()
+        
+        // Share the meme
+        let activityViewController: UIActivityViewController = UIActivityViewController(
+            activityItems: [memeImage],
+            applicationActivities: nil)
+        activityViewController.completionWithItemsHandler = saveMeme
+        self.presentViewController(activityViewController, animated: true, completion: nil)
     }
     
     
@@ -164,8 +180,26 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         view.frame.origin.y = 0
     }
     
-    func compileMeme() {
+    func buildMemeImage() -> UIImage {
+        // Say cheese...
+        UIGraphicsBeginImageContext(imageView.frame.size)
         
+        // CHEESE
+        view.drawViewHierarchyInRect(imageView.frame, afterScreenUpdates: true)
+        let compiledImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        // And I'm spent
+        UIGraphicsEndImageContext()
+        return compiledImage
+    }
+    
+    func saveMeme(activityType: String?, completed: Bool, returnedItems: [AnyObject]?, activityError: NSError?) {
+        // Saving to an instance variable to convince Xcode we're doing something with the struct
+        meme = Meme(
+            topText: topTextfield.text!,
+            bottomText: bottomTextfield.text!,
+            originalImage: imageView.image!,
+            compiledImage: buildMemeImage())
     }
 
 }
