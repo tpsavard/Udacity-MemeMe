@@ -30,6 +30,7 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         
         picker.delegate = self
         
+        // Prep UI
         reset()
         
         // Enable camera button iff camera is accessible
@@ -88,16 +89,17 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     }
     
     func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-        moveBottomTextFieldDown()
+        moveDownForKeybaord()
         return true
     }
     
     func keyboardWillShow(notification: NSNotification) {
-        moveBottomTextFieldUp()
+        let height: CGFloat = getKeyboardHeight(notification)
+        moveUpForKeybaord(height)
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        moveBottomTextFieldDown()
+        moveDownForKeybaord()
     }
     
     
@@ -133,7 +135,7 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     }
     
     
-    // MARK:-
+    // MARK:- Other Methods
     
     func reset() {
         // Reset Meme
@@ -145,20 +147,21 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         bottomTextfield.text = "BOTTOM"
     }
     
-    func moveBottomTextFieldUp() {
-//        if (view.frame.origin.y == 0) {
-//            view.frame.origin.y -= getKeyboardHeight(notification)
-//        }
-    }
-    
-    func moveBottomTextFieldDown() {
-//        view.frame.origin.y = 0
-    }
-    
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
         let userInfo = notification.userInfo
         let keyboardFrame: NSValue = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
         return keyboardFrame.CGRectValue().height
+    }
+    
+    func moveUpForKeybaord(height: CGFloat) {
+        // Move only if the view hasn't been moved already
+        if (view.frame.origin.y == 0) {
+            view.frame.origin.y -= height
+        }
+    }
+    
+    func moveDownForKeybaord() {
+        view.frame.origin.y = 0
     }
     
     func compileMeme() {
