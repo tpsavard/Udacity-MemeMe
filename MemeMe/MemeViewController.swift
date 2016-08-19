@@ -16,6 +16,7 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     @IBOutlet weak var bottomTextfield: UITextField!
     
     // Chrome
+    @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     
@@ -185,6 +186,9 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     }
     
     func buildMemeImage() -> UIImage {
+        // Moving everything out of the way
+        toolBar.hidden = true
+        
         // Say cheese...
         UIGraphicsBeginImageContext(view.frame.size)
         
@@ -194,6 +198,9 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         
         // And I'm spent
         UIGraphicsEndImageContext()
+        
+        // Like we were never here
+        toolBar.hidden = false
         return compiledImage
     }
     
