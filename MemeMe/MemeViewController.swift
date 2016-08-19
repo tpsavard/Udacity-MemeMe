@@ -182,10 +182,10 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     
     func buildMemeImage() -> UIImage {
         // Say cheese...
-        UIGraphicsBeginImageContext(imageView.frame.size)
+        UIGraphicsBeginImageContext(view.frame.size)
         
         // CHEESE
-        view.drawViewHierarchyInRect(imageView.frame, afterScreenUpdates: true)
+        view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: true)
         let compiledImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
         
         // And I'm spent
