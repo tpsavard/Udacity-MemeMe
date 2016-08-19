@@ -71,6 +71,10 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
             object: nil)
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
     
     // MARK:- Delegate Methods, Notification Handlers
     
