@@ -43,33 +43,13 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Subscribe to keyboard notifications
-        NSNotificationCenter.defaultCenter().addObserver(
-            self,
-            selector: #selector(keyboardWillShow(_:)),
-            name: UIKeyboardWillShowNotification,
-            object: nil)
-        
-        NSNotificationCenter.defaultCenter().addObserver(
-            self,
-            selector: #selector(keyboardWillHide(_:)),
-            name: UIKeyboardWillHideNotification,
-            object: nil)
+        subcribeToKeyboardNotifications()
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
-        // Unsubscribe from keybaord notifications
-        NSNotificationCenter.defaultCenter().removeObserver(
-            self,
-            name: UIKeyboardWillShowNotification,
-            object: nil)
-        
-        NSNotificationCenter.defaultCenter().removeObserver(
-            self,
-            name: UIKeyboardWillHideNotification,
-            object: nil)
+        unsubcribeToKeyboardNotifications()
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -166,6 +146,32 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         shareButton.enabled = false
         topTextfield.text = "TOP"
         bottomTextfield.text = "BOTTOM"
+    }
+    
+    func subcribeToKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(keyboardWillShow(_:)),
+            name: UIKeyboardWillShowNotification,
+            object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(keyboardWillHide(_:)),
+            name: UIKeyboardWillHideNotification,
+            object: nil)
+    }
+    
+    func unsubcribeToKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().removeObserver(
+            self,
+            name: UIKeyboardWillShowNotification,
+            object: nil)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(
+            self,
+            name: UIKeyboardWillHideNotification,
+            object: nil)
     }
     
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
