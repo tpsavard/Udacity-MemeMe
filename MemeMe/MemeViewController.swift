@@ -78,26 +78,18 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     }
     
     func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-        moveDownForKeybaord()
-        
-//        // Fix the string
-//        textField.attributedText = makeTextMemeWorthy(textField.text!)
-        
+        textField.attributedText = makeTextMemeWorthy(textField.text!)
+        moveDownForKeyboard()
         return true
     }
     
-//    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-//        textField.text = (textField.text! as NSString).stringByReplacingCharactersInRange(range, withString: string.uppercaseString)
-//        return false
-//    }
-    
     func keyboardWillShow(notification: NSNotification) {
         let height: CGFloat = getKeyboardHeight(notification)
-        moveUpForKeybaord(height)
+        moveUpForKeyboard(height)
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        moveDownForKeybaord()
+        moveDownForKeyboard()
     }
     
     
@@ -189,14 +181,14 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         return keyboardFrame.CGRectValue().height
     }
     
-    func moveUpForKeybaord(height: CGFloat) {
+    func moveUpForKeyboard(height: CGFloat) {
         // Move only if the view hasn't been moved already
         if (view.frame.origin.y == 0) {
             view.frame.origin.y -= height
         }
     }
     
-    func moveDownForKeybaord() {
+    func moveDownForKeyboard() {
         view.frame.origin.y = 0
     }
     

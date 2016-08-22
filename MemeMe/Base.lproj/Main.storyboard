@@ -29,6 +29,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" keyboardAppearance="alert" returnKeyType="done"/>
                                 <connections>
                                     <action selector="endEditing:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="tPP-bl-LVj"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="beR-6F-NhW"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zz9-MC-dfb">
@@ -38,6 +39,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" keyboardAppearance="alert" returnKeyType="done"/>
                                 <connections>
                                     <action selector="endEditing:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="KjT-Vk-Vsl"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="nqa-o3-aay"/>
                                 </connections>
                             </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="53w-Lb-ak8">
