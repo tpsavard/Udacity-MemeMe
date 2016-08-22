@@ -26,7 +26,7 @@
                                 <rect key="frame" x="20" y="74" width="560" height="58"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="48"/>
-                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" keyboardAppearance="alert" returnKeyType="done"/>
                                 <connections>
                                     <action selector="endEditing:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="tPP-bl-LVj"/>
                                 </connections>
@@ -35,7 +35,7 @@
                                 <rect key="frame" x="20" y="468" width="560" height="58"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="48"/>
-                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" keyboardAppearance="alert" returnKeyType="done"/>
                                 <connections>
                                     <action selector="endEditing:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="KjT-Vk-Vsl"/>
                                 </connections>

@@ -79,8 +79,17 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     
     func textFieldShouldEndEditing(textField: UITextField) -> Bool {
         moveDownForKeybaord()
+        
+//        // Fix the string
+//        textField.attributedText = makeTextMemeWorthy(textField.text!)
+        
         return true
     }
+    
+//    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+//        textField.text = (textField.text! as NSString).stringByReplacingCharactersInRange(range, withString: string.uppercaseString)
+//        return false
+//    }
     
     func keyboardWillShow(notification: NSNotification) {
         let height: CGFloat = getKeyboardHeight(notification)
@@ -144,8 +153,8 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         
         // Reset UI
         shareButton.enabled = false
-        topTextfield.text = "TOP"
-        bottomTextfield.text = "BOTTOM"
+        topTextfield.attributedText = makeTextMemeWorthy("top");
+        bottomTextfield.attributedText = makeTextMemeWorthy("bottom");
     }
     
     func subcribeToKeyboardNotifications() {
@@ -189,6 +198,18 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     
     func moveDownForKeybaord() {
         view.frame.origin.y = 0
+    }
+    
+    func makeTextMemeWorthy(string: String) -> NSAttributedString {
+        return NSAttributedString(
+            string: string.uppercaseString,
+            attributes: [
+                NSStrokeColorAttributeName : UIColor.blackColor(),
+                NSForegroundColorAttributeName : UIColor.whiteColor(),
+                NSStrokeWidthAttributeName : NSNumber(float: -4.0),
+                NSFontAttributeName : UIFont.systemFontOfSize(48.0, weight: UIFontWeightBlack)
+            ]
+        )
     }
     
     func buildMemeImage() -> UIImage {
