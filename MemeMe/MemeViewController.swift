@@ -224,12 +224,14 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     }
     
     func saveMeme(activityType: String?, completed: Bool, returnedItems: [AnyObject]?, activityError: NSError?) {
-        // Saving to an instance variable to convince Xcode we're doing something with the struct
-        meme = Meme(
-            topText: topTextfield.text!,
-            bottomText: bottomTextfield.text!,
-            originalImage: imageView.image!,
-            compiledImage: buildMemeImage())
+        if (completed) {
+            // Saving to an instance variable to convince Xcode we're doing something with the struct
+            meme = Meme(
+                topText: topTextfield.text!,
+                bottomText: bottomTextfield.text!,
+                originalImage: imageView.image!,
+                compiledImage: buildMemeImage())
+        }
     }
 
 }
