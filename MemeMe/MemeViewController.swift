@@ -92,6 +92,18 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         moveDownForKeyboard()
     }
     
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        // Uppercase text, but don't supress a new line character (AKA the Done button).
+        if (string == "\n") {
+            return true
+        } else {
+            textField.text = (textField.text! as NSString).stringByReplacingCharactersInRange(
+                range,
+                withString: string.uppercaseString)
+            return false
+        }
+    }
+    
     
     // MARK:- UI Methods
     
