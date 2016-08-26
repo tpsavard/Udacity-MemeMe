@@ -84,8 +84,11 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     }
     
     func keyboardWillShow(notification: NSNotification) {
-        let height: CGFloat = getKeyboardHeight(notification)
-        moveUpForKeyboard(height)
+        // Only move the keyboard for the bottom text field, as the top is always visible.
+        if (bottomTextfield.editing) {
+            let height: CGFloat = getKeyboardHeight(notification)
+            moveUpForKeyboard(height)
+        }
     }
     
     func keyboardWillHide(notification: NSNotification) {
