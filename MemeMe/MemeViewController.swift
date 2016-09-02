@@ -22,7 +22,7 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     
     let picker:UIImagePickerController = UIImagePickerController()
     
-    var meme:Meme? = nil
+    var meme: Meme? = nil
     
     
     // MARK:- View Controller Methods
@@ -115,9 +115,9 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         view.endEditing(false)
     }
     
-    @IBAction func reset(sender: UIBarButtonItem) {
-        print("reset IBAction called")
-        reset()
+    @IBAction func close(sender: UIBarButtonItem) {
+        print("close IBAction called")
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func getPhoto(sender: UIBarButtonItem) {

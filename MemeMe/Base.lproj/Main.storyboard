@@ -129,7 +129,7 @@
                                 <items>
                                     <barButtonItem tag="3" systemItem="stop" id="B6c-U4-l9w">
                                         <connections>
-                                            <action selector="reset:" destination="BYZ-38-t0r" id="gzy-Nf-KRY"/>
+                                            <action selector="close:" destination="BYZ-38-t0r" id="LnF-rt-0Bn"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Ik3-Yi-hEe"/>
