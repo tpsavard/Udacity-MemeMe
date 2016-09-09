@@ -29,7 +29,7 @@
                             <outlet property="delegate" destination="fne-go-mo0" id="Dkt-O4-DiI"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="List" id="awK-ND-va2" userLabel="List"/>
+                    <tabBarItem key="tabBarItem" title="List" image="TableImage" id="awK-ND-va2" userLabel="List"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ps2-Os-UPI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -65,7 +65,7 @@
                             <outlet property="delegate" destination="gmK-db-BNn" id="6sY-pN-K0j"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="Collection" id="zy7-X8-ZuW"/>
+                    <tabBarItem key="tabBarItem" title="Collection" image="CollectionImage" id="zy7-X8-ZuW"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vY2-lR-0yB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -210,4 +210,8 @@
             <point key="canvasLocation" x="-640" y="-1137"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="CollectionImage" width="30" height="30"/>
+        <image name="TableImage" width="30" height="30"/>
+    </resources>
 </document>
