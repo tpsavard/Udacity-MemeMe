@@ -83,16 +83,16 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         return true
     }
     
-    func keyboardWillShow(notification: NSNotification) {
+    func keyboardWillHide(notification: NSNotification) {
+        moveDownForKeyboard()
+    }
+    
+    func keyboardWillChange(notification: NSNotification) {
         // Only move the keyboard for the bottom text field, as the top is always visible.
         if (bottomTextfield.editing) {
             let height: CGFloat = getKeyboardHeight(notification)
             moveUpForKeyboard(height)
         }
-    }
-    
-    func keyboardWillHide(notification: NSNotification) {
-        moveDownForKeyboard()
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
@@ -167,26 +167,26 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     func subcribeToKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(
             self,
-            selector: #selector(keyboardWillShow(_:)),
-            name: UIKeyboardWillShowNotification,
-            object: nil)
-        
-        NSNotificationCenter.defaultCenter().addObserver(
-            self,
             selector: #selector(keyboardWillHide(_:)),
             name: UIKeyboardWillHideNotification,
+            object: nil)
+
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(keyboardWillChange(_:)),
+            name: UIKeyboardWillChangeFrameNotification,
             object: nil)
     }
     
     func unsubcribeToKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().removeObserver(
             self,
-            name: UIKeyboardWillShowNotification,
+            name: UIKeyboardWillHideNotification,
             object: nil)
         
         NSNotificationCenter.defaultCenter().removeObserver(
             self,
-            name: UIKeyboardWillHideNotification,
+            name: UIKeyboardWillChangeFrameNotification,
             object: nil)
     }
     
@@ -197,10 +197,7 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     }
     
     func moveUpForKeyboard(height: CGFloat) {
-        // Move only if the view hasn't been moved already
-        if (view.frame.origin.y == 0) {
-            view.frame.origin.y -= height
-        }
+        view.frame.origin.y = -height
     }
     
     func moveDownForKeyboard() {
