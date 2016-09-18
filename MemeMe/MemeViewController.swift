@@ -225,7 +225,7 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         
         // CHEESE
         view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: true)
-        let compiledImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        let compiledImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         
         // And I'm spent
         UIGraphicsEndImageContext()
