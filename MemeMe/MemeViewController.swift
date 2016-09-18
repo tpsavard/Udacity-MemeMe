@@ -22,7 +22,7 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     
     let picker:UIImagePickerController = UIImagePickerController()
     
-    var meme: Meme? = nil
+    var memes: [Meme] = []
     
     
     // MARK:- View Controller Methods
@@ -237,12 +237,14 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     
     func saveMeme(activityType: String?, completed: Bool, returnedItems: [AnyObject]?, activityError: NSError?) {
         if (completed) {
-            // Saving to an instance variable to convince Xcode we're doing something with the struct
-            meme = Meme(
+            // Save the meme to the collection
+            let meme: Meme = Meme(
                 topText: topTextfield.text!,
                 bottomText: bottomTextfield.text!,
                 originalImage: imageView.image!,
                 compiledImage: buildMemeImage())
+            
+            memes.append(meme)
         }
     }
 
