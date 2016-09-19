@@ -10,7 +10,7 @@ import UIKit
 
 class MemeTableViewController: UITableViewController {
     
-    var memes: [Meme] = []
+    var memes: [Meme] = MemeData.data.memes
 
     
     // MARK:- Table View Controller Methods

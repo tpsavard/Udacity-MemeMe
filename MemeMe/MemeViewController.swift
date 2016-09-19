@@ -22,7 +22,7 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     
     let picker:UIImagePickerController = UIImagePickerController()
     
-    var memes: [Meme] = []
+    var memes: [Meme] = MemeData.data.memes
     
     
     // MARK:- View Controller Methods
