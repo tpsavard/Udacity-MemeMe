@@ -21,10 +21,6 @@ class MemeTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memeData.memes.count
     }
@@ -43,7 +39,4 @@ class MemeTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100.0
-    }
 }
