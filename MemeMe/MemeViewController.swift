@@ -22,7 +22,7 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     
     let picker:UIImagePickerController = UIImagePickerController()
     
-    var memes: [Meme] = MemeData.data.memes
+    var memeData: MemeData.Data = MemeData.data
     
     
     // MARK:- View Controller Methods
@@ -244,7 +244,10 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
                 originalImage: imageView.image!,
                 compiledImage: buildMemeImage())
             
-            memes.append(meme)
+            memeData.memes.append(meme)
+            
+            // Close the meme view
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
 
