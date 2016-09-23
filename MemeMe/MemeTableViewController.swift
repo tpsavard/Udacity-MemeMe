@@ -16,7 +16,7 @@ class MemeTableViewController: UITableViewController {
     // MARK:- Table View Controller Methods
     
     override func viewWillAppear(animated: Bool) {
-        print("viewWillAppear called")
+        super.viewWillAppear(animated)
         
         self.tableView.reloadData()
     }

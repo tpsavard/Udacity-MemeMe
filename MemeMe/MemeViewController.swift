@@ -73,6 +73,7 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         print("imagePickerControllerDidCancel")
+        
         dismissViewControllerAnimated(true, completion: nil)
     }
     

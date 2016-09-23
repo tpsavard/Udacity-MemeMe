@@ -26,6 +26,7 @@ class MemeDetailViewController: UIViewController {
     
     @IBAction func close() {
         print("close IBAction called")
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

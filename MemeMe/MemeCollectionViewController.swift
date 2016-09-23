@@ -16,7 +16,7 @@ class MemeCollectionViewController: UICollectionViewController {
     // MARK:- Collection View Controller Methods
     
     override func viewWillAppear(animated: Bool) {
-        print("viewWillAppear called")
+        super.viewWillAppear(animated)
         
         self.collectionView!.reloadData()
     }
