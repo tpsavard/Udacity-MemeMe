@@ -39,6 +39,7 @@ class MemeCollectionViewController: UICollectionViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "ShowDetailViewFromCollection") {
+            // Set the image to display
             let memeDetailViewController: MemeDetailViewController = segue.destinationViewController as! MemeDetailViewController
             let memeImage: UIImage = memeData.memes[collectionView!.indexPathsForSelectedItems()![0].row].compiledImage
             memeDetailViewController.memeImage = memeImage

@@ -8,7 +8,7 @@
 
 import Foundation
 
-// Inspriation for this singleton data object came from Stack Overflow
+// Inspriation for this singleton data store came from the following Stack Overflow question:
 // http://stackoverflow.com/questions/29734954/how-do-you-share-data-between-view-controllers-and-other-objects-in-swift
 
 class MemeData {
@@ -17,6 +17,7 @@ class MemeData {
         var memes: [Meme] = []
     }
     
+    // Globally accessible, consistent data container
     static let data: Data = Data()
     
 }
