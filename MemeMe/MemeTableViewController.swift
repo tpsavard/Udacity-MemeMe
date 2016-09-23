@@ -39,4 +39,12 @@ class MemeTableViewController: UITableViewController {
         return cell
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "ShowDetailViewFromTable") {
+            let memeDetailViewController: MemeDetailViewController = segue.destinationViewController as! MemeDetailViewController
+            let memeImage: UIImage = memeData.memes[tableView.indexPathForSelectedRow!.row].compiledImage
+            memeDetailViewController.memeImage = memeImage
+        }
+    }
+    
 }

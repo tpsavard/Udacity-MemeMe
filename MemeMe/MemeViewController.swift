@@ -36,8 +36,7 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         reset()
         
         // Enable camera button iff camera is accessible
-        cameraButton.enabled =
-            UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
     }
     
     override func viewWillAppear(animated: Bool) {

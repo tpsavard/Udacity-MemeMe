@@ -80,6 +80,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="H9n-IQ-6gx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QIj-dt-VwB">
                             <size key="itemSize" width="100" height="100"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -124,10 +125,10 @@
             </objects>
             <point key="canvasLocation" x="928.79999999999995" y="-411.544227886057"/>
         </scene>
-        <!--View Controller-->
+        <!--Meme Detail View Controller-->
         <scene sceneID="Qr2-hG-9Tf">
             <objects>
-                <viewController id="pZ8-1I-fsR" sceneMemberID="viewController">
+                <viewController id="pZ8-1I-fsR" customClass="MemeDetailViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xr1-L5-Eei"/>
                         <viewControllerLayoutGuide type="bottom" id="uM6-JG-6hW"/>
@@ -141,11 +142,15 @@
                                     <constraint firstAttribute="height" constant="44" id="999-yc-iM0"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem systemItem="stop" id="psS-d0-6Ef"/>
+                                    <barButtonItem systemItem="stop" id="psS-d0-6Ef">
+                                        <connections>
+                                            <action selector="close" destination="pZ8-1I-fsR" id="b4w-Gc-3tZ"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem systemItem="flexibleSpace" id="TdY-Oy-EWE"/>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hdQ-8A-ONe"/>
+                            <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hdQ-8A-ONe"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -158,6 +163,9 @@
                             <constraint firstItem="uM6-JG-6hW" firstAttribute="top" secondItem="C1Q-kt-NiX" secondAttribute="bottom" id="x3k-9u-KUJ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="memeImageView" destination="hdQ-8A-ONe" id="QGY-Az-Qic"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8WV-mZ-i5O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -166,7 +174,7 @@
         <!--Memes-->
         <scene sceneID="eHW-kz-5J9">
             <objects>
-                <tabBarController id="RYR-Yk-dbp" customClass="MemesTabBarController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="RYR-Yk-dbp" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Memes" id="59H-2T-fQl">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="YO6-GY-h4C">
                             <connections>
@@ -214,6 +222,9 @@
                             </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="53w-Lb-ak8">
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="e6E-QG-5XC"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem tag="3" systemItem="stop" id="B6c-U4-l9w">
                                         <connections>
@@ -302,6 +313,6 @@
         <image name="TableImage" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wf7-v3-5DY"/>
+        <segue reference="bu5-K3-yfM"/>
     </inferredMetricsTieBreakers>
 </document>
