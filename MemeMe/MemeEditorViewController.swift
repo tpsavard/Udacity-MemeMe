@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewController.swift
 //  MemeMe
 //
 //  Created by Savard, Tim on 8/4/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MemeViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
+class MemeEditorViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
 
     // Meme Components
     @IBOutlet weak var imageView: UIImageView!
@@ -34,15 +34,15 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         
         // Prep UI
         reset()
-        
-        // Enable camera button iff camera is accessible
-        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         subcribeToKeyboardNotifications()
+        
+        // Enable camera button iff camera is accessible
+        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -211,7 +211,7 @@ class MemeViewController: UIViewController, UINavigationControllerDelegate, UIIm
                 NSStrokeColorAttributeName : UIColor.blackColor(),
                 NSForegroundColorAttributeName : UIColor.whiteColor(),
                 NSStrokeWidthAttributeName : NSNumber(float: -4.0),
-                NSFontAttributeName : UIFont.systemFontOfSize(48.0, weight: UIFontWeightBlack)
+                NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!
             ]
         )
     }

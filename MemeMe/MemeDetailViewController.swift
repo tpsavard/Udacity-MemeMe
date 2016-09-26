@@ -18,6 +18,8 @@ class MemeDetailViewController: UIViewController {
     // MARK:- View Controller Methods
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
         memeImageView!.image = memeImage
     }
     
