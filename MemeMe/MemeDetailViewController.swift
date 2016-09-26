@@ -21,13 +21,4 @@ class MemeDetailViewController: UIViewController {
         memeImageView!.image = memeImage
     }
     
-
-    // MARK:- UI Methods
-    
-    @IBAction func close() {
-        print("close IBAction called")
-        
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
 }

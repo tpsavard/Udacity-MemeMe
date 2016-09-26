@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="92" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dqt-dn-cY5" id="usQ-pM-vsh">
-                                    <frame key="frameInset" width="320" height="99"/>
+                                    <frame key="frameInset" width="320" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZQv-tY-sN3">
@@ -57,7 +57,7 @@
                                     <outlet property="bottomLabel" destination="ET2-jU-cuD" id="lYz-Ym-IMl"/>
                                     <outlet property="memeImageView" destination="ZQv-tY-sN3" id="5Qh-9G-sHi"/>
                                     <outlet property="topLabel" destination="xnL-E0-36T" id="Mnu-Si-HUe"/>
-                                    <segue destination="pZ8-1I-fsR" kind="presentation" identifier="ShowDetailViewFromTable" id="wf7-v3-5DY"/>
+                                    <segue destination="pZ8-1I-fsR" kind="show" identifier="ShowDetailViewFromTable" id="wf7-v3-5DY"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -109,7 +109,7 @@
                                 <size key="customSize" width="100" height="100"/>
                                 <connections>
                                     <outlet property="memeImageView" destination="lhz-kD-wMR" id="FSX-eh-thQ"/>
-                                    <segue destination="pZ8-1I-fsR" kind="presentation" identifier="ShowDetailViewFromCollection" id="bu5-K3-yfM"/>
+                                    <segue destination="pZ8-1I-fsR" kind="show" identifier="ShowDetailViewFromCollection" id="bu5-K3-yfM"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -137,30 +137,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C1Q-kt-NiX">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="999-yc-iM0"/>
-                                </constraints>
-                                <items>
-                                    <barButtonItem systemItem="stop" id="psS-d0-6Ef">
-                                        <connections>
-                                            <action selector="close" destination="pZ8-1I-fsR" id="b4w-Gc-3tZ"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem systemItem="flexibleSpace" id="TdY-Oy-EWE"/>
-                                </items>
-                            </toolbar>
-                            <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hdQ-8A-ONe"/>
+                            <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hdQ-8A-ONe">
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="C1Q-kt-NiX" firstAttribute="leading" secondItem="OMX-sl-FPh" secondAttribute="leading" id="42h-hN-fe3"/>
-                            <constraint firstAttribute="trailing" secondItem="C1Q-kt-NiX" secondAttribute="trailing" id="5vy-Hy-mXq"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hdQ-8A-ONe" secondAttribute="trailing" constant="-20" id="B0C-Kt-GpU"/>
-                            <constraint firstItem="hdQ-8A-ONe" firstAttribute="top" secondItem="Xr1-L5-Eei" secondAttribute="bottom" id="MZ9-Or-at5"/>
-                            <constraint firstItem="C1Q-kt-NiX" firstAttribute="top" secondItem="hdQ-8A-ONe" secondAttribute="bottom" id="ZzB-7p-sUt"/>
-                            <constraint firstItem="hdQ-8A-ONe" firstAttribute="leading" secondItem="OMX-sl-FPh" secondAttribute="leadingMargin" constant="-20" id="pJN-ST-JBF"/>
-                            <constraint firstItem="uM6-JG-6hW" firstAttribute="top" secondItem="C1Q-kt-NiX" secondAttribute="bottom" id="x3k-9u-KUJ"/>
+                            <constraint firstItem="hdQ-8A-ONe" firstAttribute="top" secondItem="Xr1-L5-Eei" secondAttribute="bottom" id="02Q-sP-wpz"/>
+                            <constraint firstItem="uM6-JG-6hW" firstAttribute="top" secondItem="hdQ-8A-ONe" secondAttribute="bottom" id="Fa0-sS-Z3M"/>
+                            <constraint firstAttribute="trailing" secondItem="hdQ-8A-ONe" secondAttribute="trailing" id="njg-RE-iar"/>
+                            <constraint firstItem="hdQ-8A-ONe" firstAttribute="leading" secondItem="OMX-sl-FPh" secondAttribute="leading" id="xzx-Cm-TZP"/>
                         </constraints>
                     </view>
                     <connections>
@@ -211,7 +197,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lFA-wt-waJ">
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zz9-MC-dfb">
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zz9-MC-dfb">
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="48"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" keyboardAppearance="alert" returnKeyType="done"/>
@@ -251,7 +237,7 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XEZ-so-dIA">
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XEZ-so-dIA">
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="48"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" keyboardAppearance="alert" returnKeyType="done"/>
